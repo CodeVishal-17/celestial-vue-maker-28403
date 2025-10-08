@@ -1,7 +1,10 @@
+import { useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
 import ContentSection from "@/components/ContentSection";
 import Footer from "@/components/Footer";
+import InfoPanel from "@/components/InfoPanel";
+import { useInfoPanel } from "@/hooks/useInfoPanel";
 
 import planetImage from "@/assets/planet.jpg";
 import launchImage from "@/assets/launch.jpg";
@@ -10,6 +13,16 @@ import astronautImage from "@/assets/astronaut.jpg";
 import starlinkImage from "@/assets/starlink.jpg";
 
 const Index = () => {
+  const { isOpen, content, openPanel, closePanel, setIsOpen } = useInfoPanel();
+
+  // Expose openPanel function globally for button clicks
+  useEffect(() => {
+    (window as any).openInfoPanel = openPanel;
+    return () => {
+      delete (window as any).openInfoPanel;
+    };
+  }, [openPanel]);
+
   return (
     <div className="min-h-screen bg-black">
       <Navigation />
@@ -69,6 +82,13 @@ const Index = () => {
       </main>
       
       <Footer />
+
+      {/* Info Panel System */}
+      <InfoPanel
+        open={isOpen}
+        onOpenChange={setIsOpen}
+        content={content}
+      />
     </div>
   );
 };

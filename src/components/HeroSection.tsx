@@ -54,17 +54,17 @@ const HeroSection = () => {
             STARSHIP'S<br />ELEVENTH FLIGHT TEST
           </h1>
 
-          {/* CTA Button - scrolls to first content section */}
+          {/* CTA Button - opens info panel */}
           <button 
-            onClick={() => {
-              const element = document.getElementById("planet");
-              if (element) {
-                const offset = 80; // navbar height
-                const elementPosition = element.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - offset;
-                window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+            onClick={(e) => {
+              e.preventDefault();
+              const openPanelFn = (window as any).openInfoPanel;
+              if (typeof openPanelFn === 'function') {
+                openPanelFn('hero');
               }
             }}
+            data-section="hero"
+            aria-haspopup="dialog"
             className="group glass-panel scroll-btn px-6 py-3 flex items-center gap-2 text-sm font-medium tracking-wide"
           >
             WATCH

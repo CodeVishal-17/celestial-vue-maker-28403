@@ -72,17 +72,15 @@ const ContentSection = ({
             </p>
 
             <button 
-              onClick={() => {
-                if (scrollTarget) {
-                  const element = document.getElementById(scrollTarget);
-                  if (element) {
-                    const offset = 80; // navbar height
-                    const elementPosition = element.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - offset;
-                    window.scrollTo({ top: offsetPosition, behavior: "smooth" });
-                  }
+              onClick={(e) => {
+                e.preventDefault();
+                const openPanelFn = (window as any).openInfoPanel;
+                if (typeof openPanelFn === 'function') {
+                  openPanelFn(id);
                 }
               }}
+              data-section={id}
+              aria-haspopup="dialog"
               className="group glass-panel scroll-btn px-6 py-3 flex items-center gap-2 text-sm font-medium tracking-wide"
             >
               {ctaText}
