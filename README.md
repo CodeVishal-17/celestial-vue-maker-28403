@@ -1,4 +1,13 @@
-# Welcome to your Lovable project
+# SpaceX-Style Multi-Page Demo App
+
+Interactive space exploration website with multi-page routing, video modals, mission pages, and dynamic content.
+
+## 🚀 Features
+- Multi-page routing (/, /missions, /missions/:id, /technology, /starlink)
+- Video player modals with keyboard controls
+- Mission detail pages with timelines and specs
+- Info panels with dynamic/fallback content
+- Responsive design and accessibility
 
 ## Project info
 

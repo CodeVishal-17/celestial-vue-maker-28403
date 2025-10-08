@@ -1,9 +1,13 @@
 import { useState, useEffect } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
 const Navigation = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const isHomePage = location.pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,11 +25,29 @@ const Navigation = () => {
     }
   };
 
+  const handleNavClick = (path: string, sectionId?: string) => {
+    setIsMobileMenuOpen(false);
+    
+    if (path === "/" && sectionId) {
+      // If on home page, just scroll
+      if (isHomePage) {
+        scrollToSection(sectionId);
+      } else {
+        // Navigate to home, then scroll
+        navigate("/");
+        setTimeout(() => scrollToSection(sectionId), 100);
+      }
+    } else {
+      // Navigate to different page
+      navigate(path);
+    }
+  };
+
   const navLinks = [
-    { label: "STARSHIP", id: "hero" },
-    { label: "MISSIONS", id: "planet" },
-    { label: "TECHNOLOGY", id: "launch" },
-    { label: "STARLINK", id: "starlink" },
+    { label: "STARSHIP", path: "/", sectionId: "hero" },
+    { label: "MISSIONS", path: "/missions" },
+    { label: "TECHNOLOGY", path: "/technology" },
+    { label: "STARLINK", path: "/starlink" },
   ];
 
   return (
@@ -37,19 +59,19 @@ const Navigation = () => {
       >
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <button
-              onClick={() => scrollToSection("hero")}
+            <Link
+              to="/"
               className="text-2xl font-display font-bold tracking-wider hover:text-primary transition-colors"
             >
               SPACEX-STYLE
-            </button>
+            </Link>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
               {navLinks.map((link) => (
                 <button
-                  key={link.id}
-                  onClick={() => scrollToSection(link.id)}
+                  key={link.label}
+                  onClick={() => handleNavClick(link.path, link.sectionId)}
                   className="text-sm font-medium tracking-wide hover:text-primary transition-colors"
                 >
                   {link.label}
@@ -78,8 +100,8 @@ const Navigation = () => {
         <div className="flex flex-col items-center justify-center h-full space-y-8">
           {navLinks.map((link) => (
             <button
-              key={link.id}
-              onClick={() => scrollToSection(link.id)}
+              key={link.label}
+              onClick={() => handleNavClick(link.path, link.sectionId)}
               className="text-2xl font-display font-bold tracking-wider hover:text-primary transition-colors"
             >
               {link.label}

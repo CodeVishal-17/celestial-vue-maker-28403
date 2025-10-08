@@ -1,9 +1,11 @@
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   const footerLinks = [
-    { label: "About", href: "#" },
-    { label: "Missions", href: "#" },
-    { label: "Careers", href: "#" },
-    { label: "Updates", href: "#" },
+    { label: "About", href: "/" },
+    { label: "Missions", href: "/missions" },
+    { label: "Technology", href: "/technology" },
+    { label: "Starlink", href: "/starlink" },
   ];
 
   return (
@@ -13,13 +15,13 @@ const Footer = () => {
           {/* Links */}
           <div className="flex flex-wrap justify-center gap-6 md:gap-8">
             {footerLinks.map((link) => (
-              <a
+              <Link
                 key={link.label}
-                href={link.href}
+                to={link.href}
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
 

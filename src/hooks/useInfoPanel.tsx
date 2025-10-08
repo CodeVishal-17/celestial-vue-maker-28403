@@ -15,13 +15,7 @@ const SECTION_CONTENT: Record<string, PanelContent> = {
     imageAlt: "Starship spacecraft",
     ctaLabel: "WATCH LIVE",
     ctaAction: () => {
-      const element = document.getElementById("planet");
-      if (element) {
-        const offset = 80;
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - offset;
-        window.scrollTo({ top: offsetPosition, behavior: "smooth" });
-      }
+      window.location.href = "/missions/starship-test";
     },
   },
   planet: {
@@ -29,15 +23,9 @@ const SECTION_CONTENT: Record<string, PanelContent> = {
     description: "SpaceX believes humanity should become a multiplanetary species by establishing a self-sustaining city on Mars. This ambitious goal drives our innovations in rocket technology and spacecraft design. We're developing the technology and infrastructure needed to transport humans and cargo to Mars, ultimately creating a backup of Earth civilization.",
     image: planetImage,
     imageAlt: "Mars planet surface",
-    ctaLabel: "EXPLORE MARS MISSION",
+    ctaLabel: "VIEW MISSION DETAILS",
     ctaAction: () => {
-      const element = document.getElementById("launch");
-      if (element) {
-        const offset = 80;
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - offset;
-        window.scrollTo({ top: offsetPosition, behavior: "smooth" });
-      }
+      window.location.href = "/missions/mars-mission";
     },
   },
   launch: {
@@ -45,15 +33,9 @@ const SECTION_CONTENT: Record<string, PanelContent> = {
     description: "Our reusable rocket technology has transformed the economics of spaceflight. By landing and reusing orbital class boosters, we're making space more accessible than ever before. Each Falcon 9 booster can be flown multiple times, dramatically reducing the cost per launch and enabling more frequent access to space.",
     image: launchImage,
     imageAlt: "Falcon 9 rocket launch",
-    ctaLabel: "VIEW LAUNCH SCHEDULE",
+    ctaLabel: "LEARN MORE",
     ctaAction: () => {
-      const element = document.getElementById("dual-landing");
-      if (element) {
-        const offset = 80;
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - offset;
-        window.scrollTo({ top: offsetPosition, behavior: "smooth" });
-      }
+      window.location.href = "/technology#reusability";
     },
   },
   "dual-landing": {
@@ -61,15 +43,9 @@ const SECTION_CONTENT: Record<string, PanelContent> = {
     description: "With proven reliability and the world's only reusable orbital class rockets, we provide cost-effective access to space for commercial and government customers worldwide. Our dual booster landing capability showcases the precision and reliability that has made SpaceX the most trusted name in commercial spaceflight.",
     image: dualLandingImage,
     imageAlt: "Dual Falcon Heavy booster landing",
-    ctaLabel: "SEE OUR MISSIONS",
+    ctaLabel: "VIEW ALL MISSIONS",
     ctaAction: () => {
-      const element = document.getElementById("astronaut");
-      if (element) {
-        const offset = 80;
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - offset;
-        window.scrollTo({ top: offsetPosition, behavior: "smooth" });
-      }
+      window.location.href = "/missions";
     },
   },
   astronaut: {
@@ -77,15 +53,9 @@ const SECTION_CONTENT: Record<string, PanelContent> = {
     description: "Dragon is the only spacecraft currently flying that is capable of returning significant amounts of cargo to Earth, and is the first private spacecraft to take humans to the International Space Station. Dragon has completed dozens of missions to the ISS, carrying both cargo and crew safely to orbit and back.",
     image: astronautImage,
     imageAlt: "Astronaut in Dragon spacecraft",
-    ctaLabel: "DISCOVER DRAGON",
+    ctaLabel: "VIEW MISSION DETAILS",
     ctaAction: () => {
-      const element = document.getElementById("starlink");
-      if (element) {
-        const offset = 80;
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - offset;
-        window.scrollTo({ top: offsetPosition, behavior: "smooth" });
-      }
+      window.location.href = "/missions/dragon-crew";
     },
   },
   starlink: {
@@ -93,9 +63,9 @@ const SECTION_CONTENT: Record<string, PanelContent> = {
     description: "Starlink is the world's first and largest satellite constellation using a low Earth orbit to deliver broadband internet capable of supporting streaming, online gaming, video calls and more. With thousands of satellites in orbit and growing, Starlink provides high-speed internet to underserved areas around the globe.",
     image: starlinkImage,
     imageAlt: "Starlink satellites in orbit",
-    ctaLabel: "GET STARLINK NOW",
+    ctaLabel: "ORDER STARLINK",
     ctaAction: () => {
-      window.open("https://www.starlink.com", "_blank");
+      window.location.href = "/starlink";
     },
   },
 };
